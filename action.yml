@@ -1,7 +1,6 @@
 name: 'Search Text'
 description: 'Search a text in files into repository'
-icon: 'search'
-color: 'orange'
+Author: 'VR Software'
 inputs:
   text:
     description: 'Text to search in files content'
@@ -27,3 +26,6 @@ runs:
     - ${{ inputs.include }}
     - ${{ inputs.exclude-dir }}
     - ${{ inputs.error-on-find }}
+branding:
+  icon: 'search'
+  color: 'orange'
