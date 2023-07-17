@@ -5,8 +5,11 @@ RED='\033[0;31m'
 BLUE='\033[0;34m'
 GREEN='\033[0;32m'
 
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
+
 # echo -e "${BLUE}Finding text... ${NC}"
-echo "Finding text..."
+echo "${BOLD} ${BLUE}Finding text...${NC} ${NORMAL}"
 
 if [ -z "$3" ]; then
     grep -E -ron --include=$2 "$1" . | tee lines-with-text.out
@@ -17,16 +20,22 @@ fi
 COUNT=$(wc -l lines-with-text.out | sed s/lines-with-text.out// | sed s/\ \//)
 FILES=$(cat lines-with-text.out)
 
-if [ ! -z "$COUNT" ] && ([ $4 = true ] || [ $4 = "true" ]); then
-    echo -e "${RED}Text found, $COUNT incidences${NC}"
-    exit 1
+echo "count=$COUNT" >> $GITHUB_OUTPUT
+
+if [ ! -z "$COUNT" ]; then
+    echo -e "${BOLD} ${RED}Text ($1) found, $COUNT incidences${NC} ${NORMAL}"
+    
+    if ([ $4 = true ] || [ $4 = "true" ]): then
+        exit 1
+    fi
+else
+    echo -e "${BOLD} ${GREEN}Text ($1) not found!${NC} ${NORMAL}"
 fi
 
-echo -e "${GREEN}Text found, $COUNT incidences${NC}"
 
-echo "count=$COUNT" >> $GITHUB_OUTPUT
+
 # echo "files=$FILES" >> $GITHUB_OUTPUT
 
-echo 'files<<EOF' >> $GITHUB_OUTPUT
-$FILES >> $GITHUB_OUTPUT
-echo 'EOF' >> $GITHUB_OUTPUT
+# echo 'files<<EOF' >> $GITHUB_OUTPUT
+# $FILES >> $GITHUB_OUTPUT
+# echo 'EOF' >> $GITHUB_OUTPUT
