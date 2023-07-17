@@ -6,6 +6,9 @@
 #     egrep -rn --include="$2" --exclude-dir="$3" "$1" . | tee lines-with-text.out
 # fi
 
+egrep --help
+echo "------------------------------------"
+
 echo -e "$1"
 echo -e "$2"
 echo -e "$3"
