@@ -21,7 +21,7 @@ echo "count=$COUNT" >> $GITHUB_OUTPUT
 if [ ! -z "$COUNT" ]; then
     echo -e "${RED}Text ($1) found, $COUNT incidences${NC}"
     
-    if ([ $4 = true ] || [ $4 = "true" ]): then
+    if ([ $4 = true ] || [ $4 = "true" ]); then
         exit 1
     fi
 else
