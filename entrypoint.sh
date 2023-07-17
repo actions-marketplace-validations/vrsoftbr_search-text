@@ -6,7 +6,12 @@
 #     egrep -rn --include="$2" --exclude-dir="$3" "$1" . | tee lines-with-text.out
 # fi
 
-egrep -rn --include="*.ts" --exclude-dir="{node_modules,coverage}" "console.error" . | tee lines-with-text.out
+echo -e "$1"
+echo -e "$2"
+echo -e "$3"
+echo -e "$4"
+
+egrep -rn --include="'*.ts'" --exclude-dir="'{node_modules,coverage}'" "'console.error'" . | tee lines-with-text.out
 
 COUNT=$(wc -l lines-with-text.out | sed s/lines-with-text.out// | sed s/\ \//)
 
