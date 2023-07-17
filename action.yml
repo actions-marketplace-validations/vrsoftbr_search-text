@@ -17,8 +17,6 @@ inputs:
 outputs:
   count: 
     description: 'Count of incidence of text in files'
-  files: 
-    description: 'Files that text is encountered'
 runs:
   using: 'docker'
   image: 'Dockerfile'
