@@ -1,5 +1,8 @@
 #!/bin/sh -l
 
+RED='\033[0;31m'
+NC='\033[0m'
+
 if [ -z "$3" ]; then
     grep -E -ron --include=$2 "$1" . | tee lines-with-text.out
 else
@@ -7,22 +10,14 @@ else
 fi
 
 COUNT=$(wc -l lines-with-text.out | sed s/lines-with-text.out// | sed s/\ \//)
-
 FILES=$(cat lines-with-text.out)
 
-echo -e "$COUNT"
-
-echo -e "Text found in:"
-echo -e "$FILES"
-
-echo -e "$4"
-
-if [ -z "$COUNT" ] && ([ $4 == true ] || [ $4 == "true" ]); then
-    echo -e "Text found, $COUNT incidences, throwing error!"
+if [ ! -z "$COUNT" ] && ([ $4 = true ] || [ $4 = "true" ]); then
+    echo "${RED}Text found, $COUNT incidences:${NC}"
     exit 1
 fi
 
-echo -e "Text found, $COUNT incidences!"
+echo "Text found, $COUNT incidences!"
 
 echo "count=$COUNT" >> $GITHUB_OUTPUT
 # echo "files=$FILES" >> $GITHUB_OUTPUT
