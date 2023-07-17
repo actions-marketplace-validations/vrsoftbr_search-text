@@ -19,7 +19,7 @@ FILES=$(cat lines-with-text.out)
 
 echo "count=$COUNT" >> $GITHUB_OUTPUT
 
-if [ ! -z "$COUNT" ]; then
+if [ ! -z "$COUNT" ] && [ $COUNT > 0 ]; then
     echo -e "${RED}Text ($1) found, $COUNT incidences${NC}"
     
     if ([ $4 = true ] || [ $4 = "true" ]); then
