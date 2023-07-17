@@ -5,11 +5,8 @@ RED='\033[0;31m'
 BLUE='\033[0;34m'
 GREEN='\033[0;32m'
 
-BOLD=$(tput bold)
-NORMAL=$(tput sgr0)
-
 # echo -e "${BLUE}Finding text... ${NC}"
-echo "${BOLD} ${BLUE}Finding text...${NC} ${NORMAL}"
+echo "${BLUE}Finding text...${NC}"
 
 if [ -z "$3" ]; then
     grep -E -ron --include=$2 "$1" . | tee lines-with-text.out
@@ -23,13 +20,13 @@ FILES=$(cat lines-with-text.out)
 echo "count=$COUNT" >> $GITHUB_OUTPUT
 
 if [ ! -z "$COUNT" ]; then
-    echo -e "${BOLD} ${RED}Text ($1) found, $COUNT incidences${NC} ${NORMAL}"
+    echo -e "${RED}Text ($1) found, $COUNT incidences${NC}"
     
     if ([ $4 = true ] || [ $4 = "true" ]): then
         exit 1
     fi
 else
-    echo -e "${BOLD} ${GREEN}Text ($1) not found!${NC} ${NORMAL}"
+    echo -e "${GREEN}Text ($1) not found!${NC}"
 fi
 
 
