@@ -18,4 +18,8 @@ fi
 echo -e "Text found, $COUNT incidences!"
 
 echo "count=$COUNT" >> $GITHUB_OUTPUT
-echo "files=$FILES" >> $GITHUB_OUTPUT
+# echo "files=$FILES" >> $GITHUB_OUTPUT
+
+echo 'files<<EOF' >> $GITHUB_OUTPUT
+$FILES >> $GITHUB_OUTPUT
+echo 'EOF' >> $GITHUB_OUTPUT
