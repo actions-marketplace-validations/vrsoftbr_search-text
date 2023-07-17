@@ -1,0 +1,29 @@
+name: 'Search Text'
+description: 'Search a text in files into repository'
+inputs:
+  text:
+    description: 'Text to search in files content'
+    required: true
+  include:
+    description: 'File pattern to search files that match (Ex.: *.ts or *.{js.ts} to multiples)'
+    required: true
+  exclude-dir:
+    description: 'Directory to be ignored (Ex.: node_modules or {node_modules,coverage} to multiples)'
+    required: false
+  error-on-find:
+    description: 'When find, throw a error?'
+    required: true
+    default: false
+outputs:
+  count: 
+    description: 'Count of incidence of text in files'
+  files: 
+    description: 'Files that text is encountered'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.text }}
+    - ${{ inputs.include }}
+    - ${{ inputs.exclude-dir }}
+    - ${{ inputs.error-on-find }}
