@@ -10,6 +10,13 @@ COUNT=$(wc -l lines-with-text.out | sed s/lines-with-text.out// | sed s/\ \//)
 
 FILES=$(cat lines-with-text.out)
 
+echo -e "$COUNT"
+
+echo -e "Text found in:"
+echo -e "$FILES"
+
+echo -e "$4"
+
 if [ -z "$COUNT" ] && ([ $4 == true ] || [ $4 == "true" ]); then
     echo -e "Text found, $COUNT incidences, throwing error!"
     exit 1
