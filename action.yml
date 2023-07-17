@@ -1,5 +1,7 @@
 name: 'Search Text'
 description: 'Search a text in files into repository'
+icon: search
+color: orange
 inputs:
   text:
     description: 'Text to search in files content'
