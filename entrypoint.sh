@@ -8,11 +8,6 @@ GREEN='\033[0;32m'
 echo -e "${BLUE}--------------------------------------------------------------------------------${NC}"
 echo -e "${BLUE}Finding text...${NC}"
 
-bold=$(tput bold)
-normal=$(tput sgr0)
-
-echo "So, ${bold}I'm bolded${normal} but I'm not bolded"
-
 if [ -z "$3" ]; then
     grep -E -ron --include=$2 "$1" . | tee lines-with-text.out
 else
@@ -33,9 +28,3 @@ if [ ! -z "$COUNT" ]; then
 else
     echo -e "${GREEN}Text ($1) not found!${NC}"
 fi
-
-# echo "files=$FILES" >> $GITHUB_OUTPUT
-
-# echo 'files<<EOF' >> $GITHUB_OUTPUT
-# $FILES >> $GITHUB_OUTPUT
-# echo 'EOF' >> $GITHUB_OUTPUT
