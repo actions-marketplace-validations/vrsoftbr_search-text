@@ -26,10 +26,6 @@ Directory to be ignored (Ex.: `node_modules` or `{node_modules,coverage}` to mul
 
 Count of incidence of text in files
 
-### `files`
-
-Files that text is encountered
-
 ## Example usage
 
 ```yaml
