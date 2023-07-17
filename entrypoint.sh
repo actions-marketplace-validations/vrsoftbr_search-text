@@ -8,25 +8,28 @@
 
 grep --help
 echo "------------------------------------"
+grep --version
+echo "************************************"
 
 echo -e "$1"
 echo -e "$2"
 echo -e "$3"
 echo -e "$4"
 
-grep -rn --include="'*.ts'" --exclude-dir="'{node_modules,coverage}'" "'console.error'" . | tee lines-with-text.out
 
-COUNT=$(wc -l lines-with-text.out | sed s/lines-with-text.out// | sed s/\ \//)
+#grep -rn --include="'*.ts'" --exclude-dir="'{node_modules,coverage}'" "'console.error'" . | tee lines-with-text.out
 
-FILES=$(cat lines-with-text.out)
+#COUNT=$(wc -l lines-with-text.out | sed s/lines-with-text.out// | sed s/\ \//)
+
+#FILES=$(cat lines-with-text.out)
 
 # if [ -z "$COUNT" ] && ([ $4 == true ] || [ $4 == "true" ]); then
 #     echo -e "Text found, $COUNT incidences, throwing error!"
 #     exit 1
 # fi
 
-echo -e "Text found, $COUNT incidences!"
+# echo -e "Text found, $COUNT incidences!"
 
-echo "count=$COUNT" >> $GITHUB_OUTPUT
-echo "files=$FILES" >> $GITHUB_OUTPUT
+# echo "count=$COUNT" >> $GITHUB_OUTPUT
+# echo "files=$FILES" >> $GITHUB_OUTPUT
 
