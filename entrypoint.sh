@@ -5,6 +5,7 @@ RED='\033[0;31m'
 BLUE='\033[0;34m'
 GREEN='\033[0;32m'
 
+echo -e "${BLUE}----------------------------------------${NC}"
 echo -e "${BLUE}Finding text...${NC}"
 
 if [ -z "$3" ]; then
@@ -28,8 +29,12 @@ else
     echo -e "${GREEN}Text ($1) not found!${NC}"
 fi
 
+echo -e "${BLUE}----------------------------------------${NC}"
 
+bold=$(tput bold)
+normal=$(tput sgr0)
 
+echo "So, ${bold}I'm bolded${normal} but I'm not bolded"
 # echo "files=$FILES" >> $GITHUB_OUTPUT
 
 # echo 'files<<EOF' >> $GITHUB_OUTPUT
